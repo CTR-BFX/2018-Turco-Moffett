@@ -1,6 +1,6 @@
 # Trophoblast organoids model early human placental development #
 
-** Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard Kay<sup>4</sup>, Malwina Prater<sup>3</sup>, Alasdair McWhinnie<sup>5</sup>, M. Hollinshead<sup>1</sup>, Laura Esposito<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,6</sup>, Graham J. Burton<sup>2,3,7,§</sup> and Ashley Moffett<sup>1,3,7,§</sup> **
+**Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard Kay<sup>4</sup>, Malwina Prater<sup>3</sup>, Alasdair McWhinnie<sup>5</sup>, M. Hollinshead<sup>1</sup>, Laura Esposito<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,6</sup>, Graham J. Burton<sup>2,3,7,§</sup> and Ashley Moffett<sup>1,3,7,§</sup>**
 
 <sup>1</sup> Department of Pathology, University of Cambridge, UK
 <sup>2</sup> Department of Physiology, Neurobiology and Development, University of Cambridge, UK
