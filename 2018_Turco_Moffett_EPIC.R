@@ -39,14 +39,11 @@
 library("ggplot2")
 library('minfi')
 library('lumi')
-#library('wateRmelon')
 library('methylumi')
 library('limma')
 library('VennDiagram');
-#library('methyAnalysis')
 require('FDb.InfiniumMethylation.hg19')
 require('IlluminaHumanMethylationEPICmanifest')
-#require('IlluminaHumanMethylation450k.db')
 library('ChAMP')
 library("data.table")
 library("cowplot")
@@ -61,18 +58,6 @@ library("biomaRt")
 require("plyr")
 library("ggalt")
 
-
-#ensembl    <-  useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl")
-#ensEMBL2id <- getBM(attributes=c('ensembl_gene_id', 'external_gene_name', 'description'), mart = ensembl)
-
-#grch37 = useMart(biomart="ENSEMBL_MART_ENSEMBL", host="grch37.ensembl.org", path="/biomart/martservice", dataset="hsapiens_gene_ensembl")
-#listAttributes(grch37)
-# http://zwdzwd.github.io/InfiniumAnnotation
-#test <- read.table(gzfile("EPIC.hg38.manifest.gencode.v22.tsv.gz"), sep="\t", header=TRUE)
-#head(test, 100)
-
-#library("IlluminaHumanMethylationEPICmanifest")
-#library("IlluminaHumanMethylationEPICanno.ilm10b4.hg19")
 
 #
 # Load in the EPIC probe manifest
@@ -97,7 +82,7 @@ baseDirIDATs <- sprintf("%s/IDATs",baseDir)
 Project <- "CTR_EPIC.all"
 #------------------------------------------------------------------------------
 
-IDATs.MB             <- "/Users/rhamilto/Documents/CTR-Data/CTR_EPIC/E-GEOD-66210"
+IDATs.MB             <- paste0(BaseDir, "E-GEOD-66210")
 myLoad.MB            <- champ.load(directory = IDATs.MB, methValue='B', filterBeads=TRUE, filterXY=TRUE, detPcut = 0.01, arraytype="450K")
 head(myLoad.MB$pd)
 
@@ -183,155 +168,6 @@ plt.QC[[1]]
 plt.QC[[2]]
 
 
-functionPlotCorrelation_BSoxBS <- function(myNorm, idx1, idx2, threshold, sampleTable.champ) {
-  
-  myNorm.df           <- as.data.frame(myNorm)
-  colnames(myNorm.df) <- sampleTable.champ$Sample_Name
-  x                   <- myNorm.df[,colnames(myNorm.df)[idx2]]
-  y                   <- myNorm.df[,colnames(myNorm.df)[idx1]]
-  xy                  <- data.frame(x,y)
-  x <- ""
-  y <- ""
-  xy$diff             <- (xy$y - xy$x)
-  xt                  <- colnames(myNorm.df)[idx2]
-  yt                  <- colnames(myNorm.df)[idx1]
-  r2                  <- paste("R^2 == ", as.character(format(summary(lm(y ~ x, xy))$r.squared, digits=5)))
-
-  myNorm.df <- ""
-  
-  # http://slowkow.com/notes/ggplot2-color-by-density/
-  get_density <- function(x, y, n = 100) {
-                          dens <- MASS::kde2d(x = x, y = y, n = n)
-                          ix   <- findInterval(x, dens$x)
-                          iy   <- findInterval(y, dens$y)
-                          ii   <- cbind(ix, iy)
-                          return(dens$z[ii]) }
-  
-  xy$density <- get_density(xy$x, xy$y)
-  
-  plt <- ggplot(xy, aes(x=x, y=y)) + 
-         geom_point(alpha=0.25, size=0.1, aes(x=x, y=y, colour=density)) +
-         scale_color_viridis() +
-         geom_abline(intercept = threshold, slope = 1, linetype="dashed") +
-         geom_abline(intercept = 0, slope = 1, linetype="dashed") +
-         geom_abline(intercept = -(threshold), slope = 1, linetype="dashed") +
-         annotate("text", label = r2, x = 0.2, y = 1, size = 2, colour = "blue", parse=TRUE) +
-         geom_smooth(method=lm, colour = "blue", linetype = "solid", size=0.5, alpha=0.95) +
-         coord_fixed() +
-         ylab("BS (mC+hmC)") + xlab("oxBS (mC)") +
-         ggtitle( bquote(.(yt)~vs~.(xt)~"[threshold"~Delta*beta ==.(threshold)*"]") ) +
-         theme(text=element_text(size=6, family="sans"), plot.title=element_text(size=6, family="sans"),
-               axis.text.x=element_text(size=6, family="sans"), axis.text.y=element_text(size=6, family="sans"),
-               legend.position="none", 
-               legend.text=element_text(size=4), legend.title=element_text(size=6), legend.key.height = unit(0.2, "cm"))
-  
-  xy        <- ""
-  
-  png(paste0("SamplePlots/", Project, ".BSoxBS.Correlation.", yt, ".", xt, '.png'), units="cm", width=7.5, height=7.5, res=250)
-  par(bg=NA)
-  print(plt)
-  dev.off()
-  
-  return(plt)
-}
-functionPlotCorrelation_BSoxBS(myNorm, 3, 4, 0.2, sampleTable.champ)
-
- 
-
-functionPlotBeta_BSoxBS <- function(myNorm, idx1, idx2, sampleTable.champ) {
-  
-  myNorm.df           <- as.data.frame(myNorm)
-  colnames(myNorm.df) <- sampleTable.champ$Sample_Name
-  x                   <- myNorm.df[,colnames(myNorm.df)[idx1]]
-  y                   <- myNorm.df[,colnames(myNorm.df)[idx2]]
-  xt                  <- colnames(myNorm.df)[idx1]
-  yt                  <- colnames(myNorm.df)[idx2]
-  xy                  <- data.frame(x,y)
-  colnames(xy)        <- c("BS", "oxBS")
-  
-  suppressMessages({
-  xy.mlt              <- melt(xy) #, c("BS", "oxBS") )
-  })
-  colnames(xy.mlt)    <- c("Treatment", "Beta")
-
-  delta.lab <- as.character(bquote(Delta))
-  beta.lab  <- as.character(bquote(beta))
-  
-  plt <- ggplot(data=xy.mlt) + 
-         geom_line( aes(Beta, colour=Treatment, fill=Treatment), stat="density", alpha=0.9 ) +
-         scale_colour_manual(name="", values=c("BS"="black", "oxBS"="purple")) +
-         ggtitle(paste0(yt, " vs ", xt)) +
-         theme(text=element_text(size=8, family="sans"), plot.title=element_text(size=6, family="sans"),
-               legend.position=c(0.5, 0.85),
-               axis.text.x=element_text(size=8, family="sans"), axis.text.y=element_text(size=8, family="sans"))
-         guides(colour = guide_legend(override.aes = list(size=5))) 
-  
-  png(paste0("SamplePlots/", Project, ".BSoxBS.Beta.", yt, ".", xt, '.png'), units="cm", width=7.5, height=7.5, res=250)
-  par(bg=NA)
-  print(plt)
-  dev.off()
-  
-  myNorm.df <- ""
-  
-  return(plt)
-}
-functionPlotBeta_BSoxBS(myNorm, 3, 4, sampleTable.champ)
-
-
-functionPlotBetaDistribution <- function(myNorm, idx1, idx2, threshold, limit, sampleTable.champ) {
-  
-  myNorm.df           <- as.data.frame(myNorm)
-  colnames(myNorm.df) <- sampleTable.champ$Sample_Name
-  x                   <- myNorm.df[,colnames(myNorm.df)[idx2]]
-  y                   <- myNorm.df[,colnames(myNorm.df)[idx1]]
-  xy                  <- data.frame(x,y)
-  xy$diff             <- (xy$y - xy$x)
-  xt                  <- colnames(myNorm.df)[idx1]
-  yt                  <- colnames(myNorm.df)[idx2]
-
-  xy.inset            <- subset(xy, abs(xy$diff) > limit)
-  
-  plt <- ggplot(xy, aes(x=diff)) + 
-         geom_histogram(aes(y=..density..), binwidth=.01, colour="black", fill="white", size=0.25) +
-         geom_density(alpha=.2, fill="#FF6666") +
-         geom_vline(xintercept = -(threshold), linetype="dashed") +
-         geom_vline(xintercept = 0) +
-         geom_vline(xintercept = threshold, linetype="dashed") +
-         xlab(bquote(Delta*beta)) +
-         ggtitle( bquote(atop(.(yt)~vs~.(xt),"[threshold"~Delta*beta ==.(threshold)*"]")) ) +
-         theme(text=element_text(size=6, family="sans"), plot.title=element_text(size=6, family="sans"),
-               axis.text.x=element_text(size=6, family="sans"), axis.text.y=element_text(size=6, family="sans"),
-               legend.position="none")
-
-  plt.inset <- ggplot(xy.inset, aes(x=diff)) + 
-               geom_histogram(aes(y=..density..), binwidth=.01, colour="black", fill="white", size=0.25) +
-               geom_density(alpha=.2, fill="#FF6666") +
-               geom_vline(xintercept = -(threshold), linetype="dashed") +
-               geom_vline(xintercept = 0) +
-               geom_vline(xintercept = threshold, linetype="dashed") +
-               xlab(bquote(Delta*beta)) + 
-               #ylim(0,1.0) + 
-               ggtitle( bquote(atop("Inset"~.(yt)~vs~.(xt),"[threshold"~Delta*beta ==.(threshold)*"]") )) +
-               theme(text=element_text(size=6, family="sans"), plot.title=element_text(size=6, family="sans"),
-               axis.text.x=element_text(size=6, family="sans"), axis.text.y=element_text(size=6, family="sans"),
-               legend.position="none")
-
-  cow.plt <- plot_grid(plt, plt.inset, labels=c("A", "B"), rel_widths = c(1,1))
-  
-  myNorm.df <- ""
-  xy        <- ""
-  xy.inset  <- ""
-  
-  png(paste0("SamplePlots/", Project, ".BSoxBS.DeltaBeta.", yt, ".", xt, '.png'), units="cm", width=10, height=7.5, res=250)
-  par(bg=NA)
-  print(cow.plt)
-  dev.off()
-  
-  return(cow.plt)
-  }
-functionPlotBetaDistribution(myNorm, 3, 4, 0.2, 0.2, sampleTable.champ)
-
-
 functionPlotBetaPercentage <- function(myNorm, idx1, sampleTable.champ) {
   myNorm.df           <- as.data.frame(myNorm)
   colnames(myNorm.df) <- sampleTable.champ$Sample_Name
@@ -359,30 +195,6 @@ functionPlotBetaPercentage <- function(myNorm, idx1, sampleTable.champ) {
 return(plt)
 }
 functionPlotBetaPercentage(myNorm, 3, sampleTable.champ)
-
-
-
-
-counter = 1
-corr.plot.list <- list() 
-beta.plot.list <- list() 
-for (i in seq(1, (nrow(sampleTable.champ)), 2))
-{
-  message(paste0(counter, ": Making BS/oxBS correlation plot for samples ", i, " and ", i+1))
-  corr.plt <- functionPlotCorrelation_BSoxBS(myNorm, i, i+1, 0.2, sampleTable.champ)
-
-  message(paste0(counter, ": Making BS/oxBS beta plot for samples ", i, " and ", i+1))
-  beta.plt <- functionPlotBeta_BSoxBS(myNorm, i, i+1, sampleTable.champ)
-
-  message(paste0(counter, ": Making BS/oxBS Delta beta plot for samples ", i, " and ", i+1))
-  delta.beta.plt <- functionPlotBetaDistribution(myNorm, i, i+1, 0.2, 0.15, sampleTable.champ)
-  
-  message(paste0(counter, ": Making BS/oxBS Percent beta plot for samples ", i, " and ", i+1))
-  perc.delta.plt <- functionPlotBetaPercentage(myNorm, i,   sampleTable.champ)
-  perc.delta.plt <- functionPlotBetaPercentage(myNorm, i+1, sampleTable.champ)
-  
-  counter <- counter + 1
-}
 
 
 #
