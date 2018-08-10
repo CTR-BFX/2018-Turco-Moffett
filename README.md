@@ -1,21 +1,22 @@
-# Trophoblast organoids model early human placental development #
+# Long-tern, functional human Trophoblast organoids provide a model for maternal-fetal interactions in early pregnancy #
 
-**Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard Kay<sup>4</sup>, Malwina Prater<sup>3</sup>, Alasdair McWhinnie<sup>5</sup>, M. Hollinshead<sup>1</sup>, Laura Esposito<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,6</sup>, Graham J. Burton<sup>2,3,7,§</sup> and Ashley Moffett<sup>1,3,7,§</sup>**
+**Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard Kay<sup>4</sup>, Russell S. Hamilton<sup>2,3</sup>, Malwina Prater<sup>2,3</sup>, Michael Hollinshead<sup>1</sup>, Alasdair McWhinnie<sup>5</sup>, Laura Esposito<sup>1</sup>, Ridma Fernando<sup>2,3</sup>, Helen Skelton<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5,6</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,7</sup>, Graham J. Burton<sup>2,3,8</sup> and Ashley Moffett<sup>1,3,8,§</sup>**
 
 <sup>1</sup> Department of Pathology, University of Cambridge, UK
 <sup>2</sup> Department of Physiology, Neurobiology and Development, University of Cambridge, UK
 <sup>3</sup> Centre for Trophoblast Research, University of Cambridge, UK
 <sup>4</sup> Metabolic Research Laboratories, Wellcome Trust-MRC Institute of Metabolic Science, Addenbrooke’s Hospital, Cambridge, UK
 <sup>5</sup> Anthony Nolan Research Institute, Royal Free Hospital, London, UK
-<sup>6</sup> Epigenetics Programme, The Babraham Institute, Cambridge, UK
-<sup>7</sup> Co-last authors
-<sup>§</sup> Correspondence: M.Y. Turco (myt25@cam.ac.uk), G.J. Burton (gjb2@cam.ac.uk) and A. Moffett (am486@cam.ac.uk)
+<sup>6</sup>UCL Cancer Institute, Royal Free Campus, London, UK
+<sup>7</sup> Epigenetics Programme, The Babraham Institute, Cambridge, UK
+<sup>8</sup> Co-last authors
+<sup>§</sup> Correspondence: M.Y. Turco (myt25@cam.ac.uk) and A. Moffett (am486@cam.ac.uk)
 
 
 
 ### Citation ###
 
-Turco, M.Y., Gardner, L., Kay, R., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Trophoblast organoids model early human placental development.
+Turco, M.Y., Gardner, L., Kay, R., Hamilton, R.S., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Fernando, R., Skelton, H., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Long-tern, functional human Trophoblast organoids provide a model for maternal-fetal interactions in early pregnancy.
 
 ### Abstract ###
 
@@ -74,6 +75,8 @@ DOrg_M134   | DOrg_3 | Decidual organoids
 ### EPIC Methylation Array Data Processing:
 Genomic DNA bisulfite (BS) and oxidative bisulfite (oxBS) conversion were performed using the CEGX TrueMethyl kit (Cambridge Epigenetix / NuGEN ) and used for microarray-based DNA methylation analysis, performed at GenomeScan (GenomeScan B.V., Leiden, The Netherlands) on the HumanMethylation850 BeadChip (Illumina, Inc., San Diego, CA, U.S.A). This array interrogates over 850,000 CpG sites representing about 99% of the RefSeq genes.  The resulting iDAT files were imported and analysed using ChAMP (v2.9.10)[1,2]. Samples were processed filtering for a probe detection p-value <= 0.01, probes with a beadcount <3 in at least 5% of samples, no CpG and known SNPs[3] at probe starts, probes aligning to multiple locations,  and QC using the on array control probes. Of the total probes on the array 755577 passed the filtering and QC steps. The BMIQ[4] method was used to normalisation the two probe types present on the array. Beta methylation values from the EPIC array range from 0 (unmethylated) to 1 (methylated) and are equivalent of percentage methylation. Genomic annotations were imported from FDb.InfiniumMethylation.hg19 and IlluminaHumanMethylationEPICmanifest[5]. LINE1 elements were downloaded as tables from UCSC Genome browser for hg19[6].
 
+Rscript to recreate Methylation figures []()
+
 ### EPIC Methylation Array Sample Table ###
 
 Sample_orig_name | Sample  | Tissue_original |
@@ -104,7 +107,7 @@ Description   | URL
 ------------- | ----------
 Publication   | [Journal](http://) and [DOI](http://) <br>(<i>To be updated on publication</i>)
 Raw Data (microarray)     | ArrayExpress EMBL-EBI [E-MTAB-6683](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6683) <br>(<i>Data to be released on publication</i>)
-Raw Data (EPIC)     | [EPIC_IDATs files](EPIC_IDATs) available in this repository <br>ArrayExpress EMBL-EBI [E-MTAB-XXXX](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-XXXX) <br>(<i>Data to be released on publication</i>) 
+Raw Data (EPIC)     | [EPIC_IDATs files](EPIC_IDATs) available in this repository <br>ArrayExpress EMBL-EBI [E-MTAB-XXXX](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-XXXX) <br>(<i>Data to be released on publication</i>)
 ### Contact
 
 Contact Malwina Prater (mn367@cam.ac.uk) or Russell Hamilton (rsh46@cam.ac.uk) for bioinformatics related queries.
