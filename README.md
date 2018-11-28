@@ -1,6 +1,6 @@
-# Long-tern, functional human Trophoblast organoids provide a model for maternal-fetal interactions in early pregnancy #
+# Trophoblast organoids as a model for maternal–fetal interactions during human placentation #
 
-**Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard Kay<sup>4</sup>, Russell S. Hamilton<sup>2,3</sup>, Malwina Prater<sup>2,3</sup>, Michael Hollinshead<sup>1</sup>, Alasdair McWhinnie<sup>5</sup>, Laura Esposito<sup>1</sup>, Ridma Fernando<sup>2,3</sup>, Helen Skelton<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5,6</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,7</sup>, Graham J. Burton<sup>2,3,8</sup> and Ashley Moffett<sup>1,3,8,§</sup>**
+**Margherita Y. Turco<sup>1,2,3,§</sup>, Lucy Gardner<sup>1,3</sup>, Richard G. Kay<sup>4</sup>, Russell S. Hamilton<sup>2,3</sup>, Malwina Prater<sup>2,3</sup>, Michael Hollinshead<sup>1</sup>, Alasdair McWhinnie<sup>5</sup>, Laura Esposito<sup>1</sup>, Ridma Fernando<sup>2,3</sup>, Helen Skelton<sup>1</sup>, Frank Reimann<sup>4</sup>, Fiona Gribble<sup>4</sup>, Andrew Sharkey<sup>1,3</sup>, Steven G.E. Marsh<sup>5,6</sup>, Stephen O’Rahilly<sup>4</sup>, Myriam Hemberger<sup>3,7</sup>, Graham J. Burton<sup>2,3,8,§</sup> and Ashley Moffett<sup>1,3,8,§</sup>**
 
 <sup>1</sup> Department of Pathology, University of Cambridge, UK
 <sup>2</sup> Department of Physiology, Neurobiology and Development, University of Cambridge, UK
@@ -10,13 +10,13 @@
 <sup>6</sup>UCL Cancer Institute, Royal Free Campus, London, UK
 <sup>7</sup> Epigenetics Programme, The Babraham Institute, Cambridge, UK
 <sup>8</sup> Co-last authors
-<sup>§</sup> Correspondence: M.Y. Turco (myt25@cam.ac.uk) and A. Moffett (am486@cam.ac.uk)
+<sup>§</sup> Correspondence: M.Y. Turco (myt25@cam.ac.uk), G.J. Burton (gjb2@cam.ac.uk) and A. Moffett (am485@cam.ac.uk)
 
 
 
 ### Citation ###
 
-Turco, M.Y., Gardner, L., Kay, R., Hamilton, R.S., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Fernando, R., Skelton, H., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Long-tern, functional human Trophoblast organoids provide a model for maternal-fetal interactions in early pregnancy.
+Turco, M.Y., Gardner, L., Kay, R.G., Hamilton, R.S., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Fernando, R., Skelton, H., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Trophoblast organoids as a model for maternal–fetal interactions during human placentation. Nature. [[DOI]](https://doi.org/10.1038/s41586-018-0753-3)
 
 ### Abstract ###
 
@@ -35,60 +35,52 @@ Resource       | URL
 GRCh38         | [Link](http://mar2016.archive.ensembl.org/index.html)
 
 
-### Script to reproduce figure 4 ###
-
-Figure    | Output Filename                             | Description  
---------- | ------------------------------------------- | ------------------------
-4A        | Turco_Figure.4A.pdf         | PCA and PC loadings plots
-4B        | Turco_Figure.4B.pdf         | Heatmap
-4C        | Turco_Figure.4C.pdf         | Heatmap (top 50 by l2fc)
-4D        | Turco_Figure.4D.pdf         | Chord GO Plot
-4E        | Turco_Figure.4E.pdf         | Custom heatmap for selected genes
-
-
 ### Microarray Sample Table ###
 
-Sample_orig_name	| Sample	| Tissue_original	|
-------------|--------|------------------------
-Pl_085	    | Pl_1	 | Placental villi  
-Pl_086	    | Pl_2	 | Placental villi	 
-Pl_087	    | Pl_3	 | Placental villi	 
-Pl_241	    | Pl_4	 | Placental villi	 
-Pl_246	    | Pl_5	 | Placental villi	 
-Pl_270	    | Pl_6	 | Placental villi	 
-Pl_278    	| Pl_7	 | Placental villi	 
-Pl_345	    | Pl_8	 | Placental villi	 
-TOrg_P041	  | TOrg_1 | Trophoblast organoids	 
-TOrg_P043_2	| TOrg_2 | Trophoblast organoids	 
-TOrg_P046_2	| TOrg_3 | Trophoblast organoids	 
-TOrg_R021	  | TOrg_4 | Trophoblast organoids	 
-TOrg_R028	  | TOrg_5 | Trophoblast organoids	 
-Str_N045	  | Str_1	 | Placental stromal cells	 
-Str_N075	  | Str_2	 | Placental stromal cells	 
-Str_N078	  | Str_3	 | Placental stromal cells	 
-Str_N085	  | Str_4	 | Placental stromal cells	 
-Str_R031	  | Str_5	 | Placental stromal cells
-DOrg_M099   | DOrg_1 | Decidual organoids    
-DOrg_M130   | DOrg_2 | Decidual organoids    
-DOrg_M134   | DOrg_3 | Decidual organoids    	 
+| Sample | Tissue_original	|
+|--------|------------------------
+| Pl_1	 | Placental villi  
+| Pl_2	 | Placental villi	 
+| Pl_3	 | Placental villi	 
+| Pl_4	 | Placental villi	 
+| Pl_5	 | Placental villi	 
+| Pl_6	 | Placental villi	 
+| Pl_7	 | Placental villi	 
+| Pl_8	 | Placental villi	 
+| TOrg_1 | Trophoblast organoids	 
+| TOrg_2 | Trophoblast organoids	 
+| TOrg_3 | Trophoblast organoids	 
+| TOrg_4 | Trophoblast organoids	 
+| TOrg_5 | Trophoblast organoids	 
+| Str_1	 | Placental stromal cells	 
+| Str_2	 | Placental stromal cells	 
+| Str_3	 | Placental stromal cells	 
+| Str_4	 | Placental stromal cells	 
+| Str_5	 | Placental stromal cells
+| DOrg_1 | Decidual organoids    
+| DOrg_2 | Decidual organoids    
+| DOrg_3 | Decidual organoids    	 
 
 ### EPIC Methylation Array Data Processing:
 Genomic DNA bisulfite (BS) and oxidative bisulfite (oxBS) conversion were performed using the CEGX TrueMethyl kit (Cambridge Epigenetix / NuGEN ) and used for microarray-based DNA methylation analysis, performed at GenomeScan (GenomeScan B.V., Leiden, The Netherlands) on the HumanMethylation850 BeadChip (Illumina, Inc., San Diego, CA, U.S.A). This array interrogates over 850,000 CpG sites representing about 99% of the RefSeq genes.  The resulting iDAT files were imported and analysed using ChAMP (v2.9.10)[1,2]. Samples were processed filtering for a probe detection p-value <= 0.01, probes with a beadcount <3 in at least 5% of samples, no CpG and known SNPs[3] at probe starts, probes aligning to multiple locations,  and QC using the on array control probes. Of the total probes on the array 755577 passed the filtering and QC steps. The BMIQ[4] method was used to normalisation the two probe types present on the array. Beta methylation values from the EPIC array range from 0 (unmethylated) to 1 (methylated) and are equivalent of percentage methylation. Genomic annotations were imported from FDb.InfiniumMethylation.hg19 and IlluminaHumanMethylationEPICmanifest[5]. LINE1 elements were downloaded as tables from UCSC Genome browser for hg19[6].
 
-Rscript to recreate Methylation figures []()
+Rscript to recreate Methylation figures
 
 ### EPIC Methylation Array Sample Table ###
 
-Sample_orig_name | Sample  | Tissue_original |
------------------|---------|-----------------|
-Pl_246	         | Pl_5	   | Placental villi	 
-Pl_270	         | Pl_6	   | Placental villi	 
-Pl_278           | Pl_7	   | Placental villi	 
-Pl_345	         | Pl_8	   | Placental villi	 
-TOrg_R21         | TOrg_4  | Trophoblast organoids
-TOrg_R51         | TOrg_10 | Trophoblast organoids
-TOrg_R70         | TOrg_12 | Trophoblast organoids
-TOrg_R72         | TOrg_14 | Trophoblast organoids
+| Sample  | Tissue_original |
+|---------|-----------------|
+| Pl_5    | Placental villi	 
+| Pl_6    | Placental villi	 
+| Pl_7	  | Placental villi	 
+| Pl_8	  | Placental villi	 
+| TOrg_4  | Trophoblast organoids
+| TOrg_10 | Trophoblast organoids
+| TOrg_12 | Trophoblast organoids
+| TOrg_14 | Trophoblast organoids
+
+[iDAT Sample sheet](EPIC_IDATs/SampleSheet_Infinium_MethylationEPIC.csv)
+
 
 ### References ###
 
@@ -105,9 +97,11 @@ TOrg_R72         | TOrg_14 | Trophoblast organoids
 
 Description   | URL
 ------------- | ----------
-Publication   | [Journal](http://) and [DOI](http://) <br>(<i>To be updated on publication</i>)
-Raw Data (microarray)     | ArrayExpress EMBL-EBI [E-MTAB-6683](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6683) <br>(<i>Data to be released on publication</i>)
-Raw Data (EPIC)     | [EPIC_IDATs files](EPIC_IDATs) available in this repository <br>ArrayExpress EMBL-EBI [E-MTAB-XXXX](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-XXXX) <br>(<i>Data to be released on publication</i>)
+Publication   | [Journal](http://) and [DOI](https://doi.org/10.1038/s41586-018-0753-3)
+Raw Data (microarray)     | ArrayExpress EMBL-EBI [E-MTAB-6683](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6683)
+Raw Data (EPIC)     | ArrayExpress EMBL-EBI [E-MTAB-7204](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-7204)
+
+
 ### Contact
 
 Contact Malwina Prater (mn367@cam.ac.uk) or Russell Hamilton (rsh46@cam.ac.uk) for bioinformatics related queries.
