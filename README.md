@@ -20,7 +20,11 @@ Turco, M.Y., Gardner, L., Kay, R.G., Hamilton, R.S., Prater, M., McWhinnie, A., 
 
 ### Abstract ###
 
-To appear on publication
+Generation of long-term, genetically-stable organoid cultures of extra-embryonic fetal trophoblast cells from human early placentas.
+
+Microarray experiment to compare the overall transcriptomic profile of human placenta derived trophoblast organoid cultures with its tissue of origin, human placental villi. As the placental villi contains both trophoblast and stromal populations, we have included placenta derived stromal cultures in this comparison.
+
+Methylation profiling of the human trophoblast organoids and early placenta tissue.
 
 ### Microarray Data Processing:
 
@@ -29,6 +33,9 @@ The dataset consists of groups: CVS samples (x8), Trophoblast Organoids (x5), Pl
 The normalised matrix was prepared using lumi. Microarray probes without gene identifiers (ensembl gene id) were filtered out. Initial QC included PCA, MDS plot, etc. Principal component loadings were extracted to reveal the top 20 genes contributing to each PC. Comparisons were performed using the limma package (3.34.8) with results corrected for multiple testing using False Discovery Rate (FDR) testing. Finally the quality of the data was assessed and the correlation of the samples in the groups compared. Heatmaps were generated using the pheatmap function of the R package 'pheatmap' (1.0.8), which uses euclidean method to obtain the distance matrix and complete agglomeration method for clustering.  For the gene heatmaps, the input is the normalized intensity matrix. GO term enrichment was obtained with R package 'clusterProfiler' (3.6.0) with function enrichGO and chord plots were generated using the R package 'GOplot' (1.0.2).
 
 Placental identity was derived from comparison Placental stromal cells vs CVS placenta, and the upregulated genes defined placental trophoblast identity. Stromal genes were identified as significantly upregulated (l2fc > 1) compared to Placenta and TOrg using limma linear model and calculating empirical Bayes moderated t-statistics. The threshold of l2fc > 1 was set up low as Placenta samples already contain up to 40% stromal cells which would affect global gene expression levels. For the comparison of TOrg vs Placenta samples (difference between natural and organoid system), stromal genes were removed from the filtered matrix, and limma linear model and calculating empirical Bayes moderated t-statistics were applied. TOrg signatures (from comparison of of TOrg vs stroma) were characterised by pathway/GO analyses. The comparison between TOrg and Placenta samples with mouse ESC signature genes was done using gene list kindly provided by Myriam Hemberger. Pathway analysis was performed using databases: GO, Kegg, and Reactome,  with R packages: dose (3.2.0),  clusterProfiler (3.4.4), gage (2.26.1) and ReactomePA (1.20.2).
+
+[RScript](2018_Turco_Moffett_Microarray.R) to recreate expression array figures
+
 
 Resource       | URL
 -------------- | --------------
@@ -64,7 +71,7 @@ GRCh38         | [Link](http://mar2016.archive.ensembl.org/index.html)
 ### EPIC Methylation Array Data Processing:
 Genomic DNA bisulfite (BS) and oxidative bisulfite (oxBS) conversion were performed using the CEGX TrueMethyl kit (Cambridge Epigenetix / NuGEN ) and used for microarray-based DNA methylation analysis, performed at GenomeScan (GenomeScan B.V., Leiden, The Netherlands) on the HumanMethylation850 BeadChip (Illumina, Inc., San Diego, CA, U.S.A). This array interrogates over 850,000 CpG sites representing about 99% of the RefSeq genes.  The resulting iDAT files were imported and analysed using ChAMP (v2.9.10)[1,2]. Samples were processed filtering for a probe detection p-value <= 0.01, probes with a beadcount <3 in at least 5% of samples, no CpG and known SNPs[3] at probe starts, probes aligning to multiple locations,  and QC using the on array control probes. Of the total probes on the array 755577 passed the filtering and QC steps. The BMIQ[4] method was used to normalisation the two probe types present on the array. Beta methylation values from the EPIC array range from 0 (unmethylated) to 1 (methylated) and are equivalent of percentage methylation. Genomic annotations were imported from FDb.InfiniumMethylation.hg19 and IlluminaHumanMethylationEPICmanifest[5]. LINE1 elements were downloaded as tables from UCSC Genome browser for hg19[6].
 
-Rscript to recreate Methylation figures
+[Rscript](2018_Turco_Moffett_EPIC.R) to recreate Methylation figures
 
 ### EPIC Methylation Array Sample Table ###
 
