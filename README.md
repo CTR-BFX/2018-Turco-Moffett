@@ -16,7 +16,7 @@
 
 ### Citation ###
 
-Turco, M.Y., Gardner, L., Kay, R.G., Hamilton, R.S., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Fernando, R., Skelton, H., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Trophoblast organoids as a model for maternal–fetal interactions during human placentation. Nature. [[DOI]](https://doi.org/10.1038/s41586-018-0753-3)
+Turco, M.Y., Gardner, L., Kay, R.G., Hamilton, R.S., Prater, M., McWhinnie, A., Hollinshead., M., Esposito, L., Fernando, R., Skelton, H., Reimann, F., Gribble, F., Sharkey, A., Marsh, S.G.E., O’Rahilly, S., Hemberger, M., Burton, G.J. and Moffett, A. (2018) Trophoblast organoids as a model for maternal–fetal interactions during human placentation. Nature. <i>In Press.</i> [[DOI]](https://doi.org/10.1038/s41586-018-0753-3)
 
 ### Abstract ###
 
@@ -104,7 +104,7 @@ Genomic DNA bisulfite (BS) and oxidative bisulfite (oxBS) conversion were perfor
 
 Description   | URL
 ------------- | ----------
-Publication   | [Journal](http://) and [DOI](https://doi.org/10.1038/s41586-018-0753-3)
+Publication   | [Journal](https://www.nature.com/articles/s41586-018-0753-3) and [DOI](https://doi.org/10.1038/s41586-018-0753-3)
 Raw Data (microarray)     | ArrayExpress EMBL-EBI [E-MTAB-6683](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6683)
 Raw Data (EPIC)     | ArrayExpress EMBL-EBI [E-MTAB-7204](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-7204)
 
